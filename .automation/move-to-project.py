@@ -7,8 +7,9 @@ import github
 
 # We don't want to copy all labels on linked issues; only those in this subset.
 LABEL_PROJECTS = {
-    "good first issue": "Example project",
-    "question": "Another example project"
+    "good first issue": "Test organization project",
+    "question": "Test organization project",
+    "bug": "Test organization project"
 }
 
 # Get inputs from shell
@@ -19,6 +20,7 @@ g = github.Github(token)
 
 # Initialize repo
 repo = g.get_repo(repository)
+organization = repo.organization
 
 # Open Github event JSON
 with open(path) as f:
@@ -39,7 +41,7 @@ else:
     content_id = event["pull_request"]["id"]
 
 # Fetch the project we want to add to or remove from
-project = [p for p in repo.get_projects() if p.name == LABEL_PROJECTS[label_name]][0]
+project = [p for p in organization.get_projects() if p.name == LABEL_PROJECTS[label_name]][0]
 
 # If the label was added, we want to add to the project. If removed, we want to
 # remove from the project.
