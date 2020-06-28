@@ -14,5 +14,4 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: scheduled-organization-job
-      run: cat $GITHUB_EVENT_PATH && python3 .automation/scheduled-organization-job.py ${{
-      secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY $GITHUB_EVENT_PATH
+      run: cat $GITHUB_EVENT_PATH && python3 .automation/scheduled-organization-job.py ${{secrets.GITHUB_TOKEN }} $GITHUB_REPOSITORY $GITHUB_EVENT_PATH
