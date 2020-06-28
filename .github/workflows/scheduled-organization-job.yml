@@ -7,7 +7,7 @@ on:
             - unlabeled
 
 jobs:
-  add-to-projects:
+  scheduled-organization-job:
     runs-on: ubuntu-latest
     container: quay.io/enarx/fedora
     steps:
