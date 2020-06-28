@@ -34,5 +34,5 @@ print(other_repo.name)
 print(other_repo.organization)
 
 print("creating repo dispatch")
-success = other_repo.create_repository_dispatch(event_type="test")
+success = repo.create_repository_dispatch(event_type="test")
 print(success)
