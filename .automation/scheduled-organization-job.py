@@ -26,22 +26,13 @@ organization = repo.organization
 with open(path) as f:
     event = json.load(f)
 
-# Determine whether the labels were added or removed
-action = event["action"]
-
-# Get the name of the label
-label_name = event["label"]["name"]
-
-# Determine content type: issue or PR, as well as content ID
-if "issue" in event:
-    content_type = "Issue"
-    content_id = event["issue"]["id"]
-else:
-    content_type = "PullRequest"
-    content_id = event["pull_request"]["id"]
-
 # Fetch the project we want to add to or remove from
 other_repo = [p for p in organization.get_repos() if p.name == "test-repo"][0]
 
+print(other_repo)
+print(other_repo.name)
+print(other_repo.organization)
+
 print("creating repo dispatch")
-other_repo.create_repository_dispatch("test")
+success = other_repo.create_repository_dispatch(event_type="test")
+print(success)
